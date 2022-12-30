@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "MessageService";
+
+package message;
+
+// The greeting service definition.
+service Message {
+  // Sends a greeting
+
+  //SERVER STREAMING YÖNTEMİ
+    //rpc SendMessage (MessageRequest) returns (stream MessageResponse);
+
+    //clıent STREAMING YÖNTEMİ
+  //rpc SendMessage (stream MessageRequest) returns ( MessageResponse);
+
+      //Bi -direcional STREAMING YÖNTEMİ
+  rpc SendMessage (stream MessageRequest) returns (stream MessageResponse);
+
+    
+}
+
+// The request message containing the user's name.
+message MessageRequest {
+  string name = 1;
+  string message = 2;
+}
+
+// The response message containing the greetings.
+message MessageResponse {
+  string message = 1;
+}
